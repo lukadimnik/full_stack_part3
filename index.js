@@ -113,10 +113,10 @@ app.delete("/api/persons/:id", (request, response) => {
 app.put("/api/persons/:id", (request, response, next) => {
   const body = request.body;
   console.log("body: ", body);
-  const person = new Person({
+  const person = {
     name: body.name,
     number: body.number,
-  });
+  };
 
   Person.findByIdAndUpdate(request.params.id, person, { new: true })
     .then((updatedPerson) => {
